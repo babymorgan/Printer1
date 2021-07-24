@@ -10,6 +10,7 @@ import { PrinterSetting, PrinterType } from '../model/localDataModels';
 })
 export class HomePage {
   bluetoothList: any[];
+  selectedPrinter:any;
   setting: PrinterSetting;
   title: string;
   constructor(public platform: Platform, private printer: PrintBluetoothService) {}
@@ -20,6 +21,13 @@ export class HomePage {
     this.getBluetoothList();
   
   }
+
+  listPrinter() { 
+    this.printer.getBluetoothList()
+     .then(resp=>{
+      this.bluetoothList=resp;
+  });
+}
 
   
   getBluetoothList(): void {
@@ -33,5 +41,17 @@ export class HomePage {
     }
   
   }
+
+  selectPrinter(macAddress)
+{
+  this.selectedPrinter=macAddress;
+}
+
+printStuff()
+{  
+   var myText="Hello hello hello \n\n\n This is a test \n\n\n";
+   this.printer.sendToBt(this.selectedPrinter,myText);
+}
+
 
 }
