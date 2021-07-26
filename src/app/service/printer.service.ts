@@ -72,7 +72,7 @@ export class PrintBluetoothService {
     })
   }
 
-  async Print(content: string, printer: PrinterSetting, cashdrawer: boolean,template: PrintTemplate, internal: String = "false"): Promise<any> {
+   Print(content: string, printer: PrinterSetting, template: PrintTemplate, internal: String = "false"){
     this.bluetoothSerial.connect(printer.IPAddress).subscribe(_ => {
       this.Write(content, printer);
     })
@@ -80,6 +80,6 @@ export class PrintBluetoothService {
 
   async printSingleReceipt(data: any, template: any, config: any, printer?: PrinterSetting): Promise<any> { 
     let  content : string = await this.FillData(data, template, config, printer, PrintType.Receipt, printer.Type);
-    let info =  await this.Print(content, printer, true,template);
+    let info =  await this.Print(content, printer, template);
   }
 }

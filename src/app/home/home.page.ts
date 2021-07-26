@@ -17,7 +17,6 @@ export class HomePage {
   setting: PrinterSetting;
   title: string;
   constructor(public platform: Platform, private printer: PrintBluetoothService) {}
-
   
   ngOnInit() {
   
@@ -45,9 +44,9 @@ export class HomePage {
   
   }
 
-  selectPrinter(macAddress)
+  selectPrinter(IPAddress)
 {
-  this.selectedPrinter=macAddress;
+  this.selectedPrinter=IPAddress;
 }
 
 receipt: any = {
@@ -82,12 +81,12 @@ receipt: any = {
 template: any = { Name: 'DealPOS', Address: 'JL. Muara Karang No.30<br />Pluit - Jakarta Utara', ContactInfo: '+62(21) 66600886' };
 
 Print() : void{
-  let time = 0;
   let content: string = this.receipt;
-  let timer = setInterval(() => { time++; }, 100);
   this.printer.printSingleReceipt(content,this.template,null,this.setting).then(async result=>{
    
   })
 }
+
+
 
 }
