@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { PrintBluetoothService } from '../service/printer.service';
-import { NavParams, ModalController,Platform } from '@ionic/angular';
-import { PrinterSetting, PrinterType } from '../model/localDataModels';
-import { commands } from '../service/printer-command';
-import EscPosEncoder from 'esc-pos-encoder-ionic';
+import { Platform } from '@ionic/angular';
+import { PrinterSetting } from '../model/localDataModels';
 
 
 @Component({
