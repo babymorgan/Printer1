@@ -5,6 +5,7 @@ import { PrinterSetting, PrinterType } from '../model/localDataModels';
 import { commands } from '../service/printer-command';
 import EscPosEncoder from 'esc-pos-encoder-ionic';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -78,10 +79,15 @@ receipt: any = {
   ]
 };
 
-printStuff()
-{  
-   ;
-   this.printer.sendToBt(this.selectedPrinter,this.receipt);
+template: any = { Name: 'DealPOS', Address: 'JL. Muara Karang No.30<br />Pluit - Jakarta Utara', ContactInfo: '+62(21) 66600886' };
+
+Print() : void{
+  let time = 0;
+  let content: string = this.receipt;
+  let timer = setInterval(() => { time++; }, 100);
+  this.printer.printSingleReceipt(content,this.template,null,this.setting).then(async result=>{
+   
+  })
 }
 
 }
