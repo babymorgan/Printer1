@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { PrintBluetoothService } from '../service/printer.service';
 import { NavParams, ModalController,Platform } from '@ionic/angular';
 import { PrinterSetting, PrinterType } from '../model/localDataModels';
+import { commands } from '../service/printer-command';
+import EscPosEncoder from 'esc-pos-encoder-ionic';
 
 @Component({
   selector: 'app-home',
@@ -47,11 +49,39 @@ export class HomePage {
   this.selectedPrinter=macAddress;
 }
 
+receipt: any = {
+  "ImageEpsonUrl": "",
+  "ImageEpsonWidth": 450,
+  "ImageEpsonHeight": 42,
+  "Title": "Invoice #17.03.011",
+  "Date": "1 Jan 2018",
+  "Items": [
+    {
+      "Variant": { "Name": "Muffin", },
+      "Quantity": 2,
+      "UnitPrice": 15000,
+      "Discount": 0,
+      "Total": 30000
+    },
+    {
+      "Variant": { "Name": "Juice" },
+      "Quantity": 1,
+      "UnitPrice": 20000,
+      "Discount": 0,
+      "Total": 20000
+    }
+  ],
+  "AmountSummary": [
+    { "Label": "Amount", "CurrencySymbol": "Rp", "Amount": 50000 },
+    { "Label": "Discount (20%)", "CurrencySymbol": "Rp", "Amount": -16000 },
+    { "Label": "Total", "CurrencySymbol": "Rp", "Amount": 34000 }
+  ]
+};
+
 printStuff()
 {  
-   var myText="Hello hello hello \n\n\n This is a test \n\n\n";
-   this.printer.sendToBt(this.selectedPrinter,myText);
+   ;
+   this.printer.sendToBt(this.selectedPrinter,this.receipt);
 }
-
 
 }

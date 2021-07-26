@@ -29,6 +29,7 @@
     "@ionic-native/bluetooth-serial": "^5.34.0",
     "@ionic-native/core": "^5.34.0",
     "@ionic/angular": "^5.5.2",
+    "esc-pos-encoder-ionic": "^1.1.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
