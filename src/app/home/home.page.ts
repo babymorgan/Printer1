@@ -14,12 +14,26 @@ export class HomePage {
   selectedPrinter:any;
   setting: PrinterSetting;
   title: string;
+  invoicePage;
+ 
   constructor(public platform: Platform, private printer: PrintBluetoothService) {}
   
   ngOnInit() {
   
     this.getBluetoothList();
+    var trims = "Terima Kasih\n";
+    var separator  = "--------------------------------\n";
+    var title = "                  LFC\n     Latihan Pijit Enak\n\n"
+    var tanggal = "Tanggal        : 03-12-2020\n";
+    var noInvoice = "No Invoice   : IV20200001 \n";
+    var customer = "Nama           : Ferdian Arief\n";
+    var header = "    Item              Biaya\n";
+    var item = "   #101          Rp. 9.000,-\n\n"
+    var total = "     Total         Rp. 9.000,-\n\n\n";
+
+    this.invoicePage =  title + tanggal + noInvoice + customer + separator + header + separator + item + separator + total + trims;
   
+    console.log(this.invoicePage)
   }
 
   listPrinter() { 
@@ -47,40 +61,16 @@ export class HomePage {
   this.selectedPrinter=IPAddress;
 }
 
-receipt: any = {
-  "ImageEpsonUrl": "",
-  "ImageEpsonWidth": 450,
-  "ImageEpsonHeight": 42,
-  "Title": "Invoice #17.03.011",
-  "Date": "1 Jan 2018",
-  "Items": [
-    {
-      "Variant": { "Name": "Muffin", },
-      "Quantity": 2,
-      "UnitPrice": 15000,
-      "Discount": 0,
-      "Total": 30000
-    },
-    {
-      "Variant": { "Name": "Juice" },
-      "Quantity": 1,
-      "UnitPrice": 20000,
-      "Discount": 0,
-      "Total": 20000
-    }
-  ],
-  "AmountSummary": [
-    { "Label": "Amount", "CurrencySymbol": "Rp", "Amount": 50000 },
-    { "Label": "Discount (20%)", "CurrencySymbol": "Rp", "Amount": -16000 },
-    { "Label": "Total", "CurrencySymbol": "Rp", "Amount": 34000 }
-  ]
-};
+
 
 
 
 
 Print(): void{
- var content:string = this.receipt
-   this.printer.printBT(this.selectedPrinter,content)
+
+  var printPage = this.invoicePage
+
+   this.printer.printBT(this.selectPrinter,printPage)
 }
+
 }

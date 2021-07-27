@@ -34,9 +34,9 @@ export class PrintBluetoothService {
 
   
 
-printBT(printer: PrinterSetting,data_string) {
+printBT(data_string,macAddress) {
   
-  this.connectToBluetoothPrinter(printer.macAddress)
+  this.connectToBluetoothPrinter(macAddress)
   .subscribe(()=>{
 
     this.bluetoothSerial.write(data_string)
