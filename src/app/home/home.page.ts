@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { PrintBluetoothService } from '../service/printer.service';
 import { Platform } from '@ionic/angular';
-import { PrinterSetting } from '../model/localDataModels';
+
+
 
 
 @Component({
@@ -12,27 +13,13 @@ import { PrinterSetting } from '../model/localDataModels';
 export class HomePage {
   bluetoothList: any[];
   selectedPrinter:any;
-  setting: PrinterSetting;
-  title: string;
-  invoicePage;
+  invoicePage: string
  
   constructor(public platform: Platform, private printer: PrintBluetoothService) {}
   
   ngOnInit() {
   
-    this.getBluetoothList();
-
-    var trims = "Terima Kasih\n";
-    var separator  = "--------------------------------\n";
-    var title = "                  LFC\n     Latihan Pijit Enak\n\n"
-    var tanggal = "Tanggal        : 03-12-2020\n";
-    var noInvoice = "No Invoice   : IV20200001 \n";
-    var customer = "Nama           : Ferdian Arief\n";
-    var header = "    Item              Biaya\n";
-    var item = "   #101          Rp. 9.000,-\n\n"
-    var total = "     Total         Rp. 9.000,-\n\n\n";
-
-    this.invoicePage =  title + tanggal + noInvoice + customer + separator + header + separator + item + separator + total + trims;
+  
 
   }
 
@@ -55,6 +42,7 @@ export class HomePage {
     }
   }
 
+
   selectPrinter(macAddress)
 {
   this.selectedPrinter= macAddress;
@@ -67,9 +55,19 @@ export class HomePage {
 
 print(){
 
-  var printPage = this.invoicePage
+  var trims = "Terima Kasih\n";
+  var separator  = "--------------------------------\n";
+  var title = "                  LFC\n     Latihan Pijit Enak\n\n"
+  var tanggal = "Tanggal        : 03-12-2020\n";
+  var noInvoice = "No Invoice   : IV20200001 \n";
+  var customer = "Nama           : Ferdian Arief\n";
+  var header = "    Item              Biaya\n";
+  var item = "   #101          Rp. 9.000,-\n\n"
+  var total = "     Total         Rp. 9.000,-\n\n\n";
 
-   this.printer.printBT(this.selectedPrinter,printPage)
+  var invoicePage =  title + tanggal + noInvoice + customer + separator + header + separator + item + separator + total + trims;
+
+   this.printer.printBT(this.selectedPrinter,invoicePage)
 }
 
 }
