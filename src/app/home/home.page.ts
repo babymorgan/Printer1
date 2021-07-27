@@ -56,9 +56,9 @@ export class HomePage {
   
   }
 
-  selectPrinter(IPAddress)
+  selectPrinter(macAddress)
 {
-  this.selectedPrinter=IPAddress;
+  this.selectedPrinter=macAddress;
 }
 
 
