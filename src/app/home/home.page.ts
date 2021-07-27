@@ -76,11 +76,11 @@ receipt: any = {
   ]
 };
 
-template: any = { Name: 'DealPOS', Address: 'JL. Muara Karang No.30<br />Pluit - Jakarta Utara', ContactInfo: '+62(21) 66600886' };
 
-Print() : void{
-  let content: string = this.receipt;
-  
-   this.printer.printBT(this.selectedPrinter,this.template,content)
+
+
+Print(): void{
+ var content:string = this.receipt
+   this.printer.printBT(this.selectedPrinter,content)
 }
 }

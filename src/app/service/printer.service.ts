@@ -32,26 +32,14 @@ export class PrintBluetoothService {
     return this.bluetoothSerial.disconnect();
   }
 
-
-  fillData(data: any, template: any, config: any, set: PrinterSetting, type: PrintType, printertype: PrinterType){
-    this.body.Data = data;
-    this.body.Template = template;
-    this.body.Config = config;
-    this.body.maxlength = set.MaxLength;
-    this.body.PrinterSetting = set;
-    this.body.isBluetooth = printertype == PrinterType.Network ? false : true;
-    let content: string = "";
-    return content;
-  }
-
   
 
-printBT(content,template,macAddress) {
-
-  this.connectToBluetoothPrinter(macAddress)
+printBT(printer: PrinterSetting,data_string) {
+  
+  this.connectToBluetoothPrinter(printer.macAddress)
   .subscribe(()=>{
 
-    this.bluetoothSerial.write(content)
+    this.bluetoothSerial.write(data_string)
   })
 }
   
