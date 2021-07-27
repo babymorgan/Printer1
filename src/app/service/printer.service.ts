@@ -18,11 +18,11 @@ export class PrintBluetoothService {
   ) {
   }
 
-  FillData(data: any, template: any, config: any, set: PrinterSetting, type: PrintType, printertype: PrinterType): string {
+  FillData(data: any, template: any, set: PrinterSetting, type: PrintType, printertype: PrinterType): string {
     //Fill Data Print
     this.body.Data = data;
     this.body.Template = template;
-    this.body.Config = config;
+    
     this.body.maxlength = set.MaxLength;
     this.body.PrinterSetting = set;
     
@@ -68,8 +68,8 @@ export class PrintBluetoothService {
     })
     }
 
-  async printSingleReceipt(data: any, template: any, config: any, printer?: PrinterSetting): Promise<any> { 
-    let  content : string = await this.FillData(data, template, config, printer, PrintType.Receipt, printer.Type);
+  async printSingleReceipt(data: any, template: any, printer?: PrinterSetting): Promise<any> { 
+    let  content : string = await this.FillData(data, template, printer, PrintType.Receipt, printer.Type);
     let info =  await this.Print(content, printer, template);
   }
 }

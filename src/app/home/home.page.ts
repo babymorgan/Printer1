@@ -80,8 +80,7 @@ template: any = { Name: 'DealPOS', Address: 'JL. Muara Karang No.30<br />Pluit -
 
 Print() : void{
   let content: string = this.receipt;
-  this.printer.printSingleReceipt(content,this.template,null,this.setting).then(async result=>{
-   "Susccess!"
-  })
+  
+   this.printer.printSingleReceipt(this.selectedPrinter,content);
 }
 }
