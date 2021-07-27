@@ -47,7 +47,7 @@ export class PrintBluetoothService {
     return this.bluetoothSerial.disconnect();
   }
 
-  Write(content: string, printer: PrinterSetting, ) {
+  write(content: string, printer: PrinterSetting, ) {
     if (printer.Cut) content += this.printcontent.Feed(2);
     let cut = this.HexToUint(printer.Code_Cutter);
     let printData = this.HexToUint(printer.Code_Eject);
@@ -56,25 +56,15 @@ export class PrintBluetoothService {
     if(printer.Cut){
       this.bluetoothSerial.write(cut.buffer);
     }   
-  
   }
 
   private HexToUint(hex: string): Uint8Array {
     return new Uint8Array(hex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
   }
-  
-
-  sendToBt(macAddress, content:string, printer: PrinterSetting) {
-
-    this.bluetoothSerial.connect(macAddress).subscribe(_ => {
-      this.Write(content, printer);
-       
-    })
-  }
 
    Print(content: string, printer: PrinterSetting, template: PrintTemplate, internal: String = "false"){
     this.bluetoothSerial.connect(printer.IPAddress).subscribe(_ => {
-      this.Write(content, printer);
+      this.write(content, printer);
     })
     }
 
