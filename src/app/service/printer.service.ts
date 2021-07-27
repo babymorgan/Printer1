@@ -19,7 +19,7 @@ export class PrintBluetoothService {
   }
 
 
-  getBluetoothList(): Promise<any> {
+  getBluetoothList(){
     return this.bluetoothSerial.list();
   }
 
@@ -32,14 +32,12 @@ export class PrintBluetoothService {
     return this.bluetoothSerial.disconnect();
   }
 
-  
-
-printBT(data_string,macAddress) {
+printBT(printPage,macAddress) {
   
   this.connectToBluetoothPrinter(macAddress)
-  .subscribe(()=>{
+  .subscribe(_=>{
 
-    this.bluetoothSerial.write(data_string)
+    this.bluetoothSerial.write(printPage)
   })
 }
   

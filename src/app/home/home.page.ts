@@ -21,6 +21,7 @@ export class HomePage {
   ngOnInit() {
   
     this.getBluetoothList();
+
     var trims = "Terima Kasih\n";
     var separator  = "--------------------------------\n";
     var title = "                  LFC\n     Latihan Pijit Enak\n\n"
@@ -32,8 +33,7 @@ export class HomePage {
     var total = "     Total         Rp. 9.000,-\n\n\n";
 
     this.invoicePage =  title + tanggal + noInvoice + customer + separator + header + separator + item + separator + total + trims;
-  
-    console.log(this.invoicePage)
+
   }
 
   listPrinter() { 
@@ -53,12 +53,11 @@ export class HomePage {
 
       console.log(this.bluetoothList)
     }
-  
   }
 
   selectPrinter(macAddress)
 {
-  this.selectedPrinter=macAddress;
+  this.selectedPrinter= macAddress;
 }
 
 
@@ -66,7 +65,7 @@ export class HomePage {
 
 
 
-Print(): void{
+print(){
 
   var printPage = this.invoicePage
 
