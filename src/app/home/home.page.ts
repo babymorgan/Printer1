@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PrintBluetoothService } from '../service/printer.service';
 import { Platform } from '@ionic/angular';
+import { PrinterSetting } from '../model/localDataModels';
 
 
 
@@ -13,15 +14,13 @@ import { Platform } from '@ionic/angular';
 export class HomePage {
   bluetoothList: any[];
   selectedPrinter:any;
-  invoicePage: string
+  setting: PrinterSetting
+
+
+
  
   constructor(public platform: Platform, private printer: PrintBluetoothService) {}
   
-  ngOnInit() {
-  
-  
-
-  }
 
   listPrinter() { 
     this.printer.getBluetoothList()
@@ -30,16 +29,12 @@ export class HomePage {
   });
 }
 
-  
-  getBluetoothList(): void {
-    this.bluetoothList = [];
-    if (this.platform.is('android')) {
-      this.printer.getBluetoothList().then(data => {
-        this.bluetoothList = data;
-      }, err => alert(err));
 
-      console.log(this.bluetoothList)
-    }
+
+  
+getBluetoothList(): void {
+  this.bluetoothList = [];
+
   }
 
 
@@ -47,9 +42,6 @@ export class HomePage {
 {
   this.selectedPrinter= macAddress;
 }
-
-
-
 
 
 
@@ -65,7 +57,7 @@ print(){
   var item = "   #101          Rp. 9.000,-\n\n"
   var total = "     Total         Rp. 9.000,-\n\n\n";
 
-  var invoicePage =  title + tanggal + noInvoice + customer + separator + header + separator + item + separator + total + trims;
+  var invoicePage:string =  title + tanggal + noInvoice + customer + separator + header + separator + item + separator + total + trims;
 
    this.printer.printBT(this.selectedPrinter,invoicePage)
 }
