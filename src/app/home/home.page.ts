@@ -70,7 +70,7 @@ Print(): void{
 
   var printPage = this.invoicePage
 
-   this.printer.printBT(this.selectPrinter,printPage)
+   this.printer.printBT(this.selectedPrinter,printPage)
 }
 
 }
