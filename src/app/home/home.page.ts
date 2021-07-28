@@ -29,6 +29,7 @@ export class HomePage implements OnInit{
   });
 }
 
+
 ngOnInit() {
   this.listPrinter();
 }
@@ -51,17 +52,17 @@ getBluetoothList(): void {
 
 print(){
 
-  var trims = "Terima Kasih\n";
-  var separator  = "--------------------------------\n";
-  var title = "                  LFC\n     Latihan Pijit Enak\n\n"
-  var tanggal = "Tanggal        : 03-12-2020\n";
-  var noInvoice = "No Invoice   : IV20200001 \n";
-  var customer = "Nama           : Ferdian Arief\n";
-  var header = "    Item              Biaya\n";
-  var item = "   #101          Rp. 9.000,-\n\n"
-  var total = "     Total         Rp. 9.000,-\n\n\n";
+  let  trims = "Terima Kasih\n";
+  let separator  = "--------------------------------\n";
+  let title = "                  LFC\n     Latihan Pijit Enak\n\n"
+  let tanggal = "Tanggal        : 03-12-2020\n";
+  let noInvoice = "No Invoice   : IV20200001 \n";
+  let customer = "Nama           : Ferdian Arief\n";
+  let header = "    Item              Biaya\n";
+  let item = "   #101          Rp. 9.000,-\n\n"
+  let total = "     Total         Rp. 9.000,-\n\n\n";
 
-  var invoicePage:string =  title + tanggal + noInvoice + customer + separator + header + separator + item + separator + total + trims;
+  let invoicePage:string =  title + tanggal + noInvoice + customer + separator + header + separator + item + separator + total + trims;
 
    this.printer.printBT(this.selectedPrinter,invoicePage)
 }
