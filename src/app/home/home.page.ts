@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PrintBluetoothService } from '../service/printer.service';
 import { Platform } from '@ionic/angular';
 import { PrinterSetting } from '../model/localDataModels';
@@ -11,7 +11,7 @@ import { PrinterSetting } from '../model/localDataModels';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
   bluetoothList: any[];
   selectedPrinter:any;
   setting: PrinterSetting
@@ -27,6 +27,10 @@ export class HomePage {
      .then(resp=>{
       this.bluetoothList=resp;
   });
+}
+
+ngOnInit() {
+  this.listPrinter();
 }
 
 
