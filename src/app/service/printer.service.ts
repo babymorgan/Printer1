@@ -63,16 +63,17 @@ export class PrintBluetoothService {
   }
 
   setPrint(content:any, printer: PrinterSetting, template: PrintTemplate, ){
-    let macAddress = printer.macAddress
+    let macAddress
     this.connectBt(macAddress).subscribe(_ => {
-      this.Write(content, printer)
+      this.bluetoothSerial.write(content).then
+        (_ => {
+          this.disconnectBt()
+        })
     })
 
   }
 
-  Write(content: string, printer: PrinterSetting){
-    this.bluetoothSerial.write(content);
-  }
+ 
 
   
   

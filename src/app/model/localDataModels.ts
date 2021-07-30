@@ -20,7 +20,7 @@ export class PrinterSetting
     Receipt: boolean;
     Order: boolean;
     MaxLength : number;
-    macAddress : string;
+
     Port : number;
     CategoryName : string;
     NumberOfCopiesReceipt  : number;

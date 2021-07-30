@@ -3,9 +3,6 @@ import { PrintBluetoothService } from '../service/printer.service';
 import { Platform } from '@ionic/angular';
 import { PrinterSetting } from '../model/localDataModels';
 
-
-
-
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -28,9 +25,8 @@ export class HomePage implements OnInit{
 
 ngOnInit() {
 
- this.bluetoothList = []
+  this.listPrinter();
 
- 
 }
 
 getBluetoothList(): void {
@@ -78,14 +74,6 @@ print(): void{
   this.printer.printReceipt(content, this.template, this.setting)
 }
 
-
-
-
-
-
-
-
-
 //print(){
 //
 //  let  trims = "Terima Kasih\n";
@@ -102,5 +90,4 @@ print(): void{
 //
 //   this.printer.printBT(this.selectedPrinter,invoicePage)
 //}
-
 }
