@@ -16,7 +16,7 @@ export class PrinterSetting
 {
     ID : number;
     Name : string;
-    Type : PrinterType;
+
     Receipt: boolean;
     Order: boolean;
     MaxLength : number;
@@ -34,7 +34,7 @@ export class PrinterSetting
     constructor()
     {
         this.Name = "";
-        this.Type = PrinterType.Standard;
+
         this.Receipt = true;
         this.Order = false;
         this.MaxLength = 32;
@@ -50,12 +50,6 @@ export class PrinterSetting
     }
 }
 
-export enum PrinterType
-{
-    Standard =1 ,
-    MPop = 2,
-    Network = 3
-}
 export enum OrderPrintTypeID
 {
     Park =1 ,
@@ -70,7 +64,7 @@ export enum PrintType
 
 export class FailedPrint
 {
-    PrintType : PrinterType;
+
     Setting : PrinterSetting;
     config : any;
     template : any;
