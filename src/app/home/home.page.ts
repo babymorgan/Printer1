@@ -22,13 +22,15 @@ export class HomePage implements OnInit{
     this.printer.getBluetoothList()
      .then(resp=>{
       this.bluetoothList=resp;
+     
   });
 }
 
 ngOnInit() {
-  this.setting.paperwidth = 58;
-  this.setting.MaxLength = 32;
-  this.listPrinter();
+
+ this.bluetoothList = []
+
+ 
 }
 
 getBluetoothList(): void {
