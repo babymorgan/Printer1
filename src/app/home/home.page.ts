@@ -26,6 +26,8 @@ export class HomePage implements OnInit{
 }
 
 ngOnInit() {
+  this.setting.paperwidth = 58;
+  this.setting.MaxLength = 32;
   this.listPrinter();
 }
 
@@ -71,8 +73,7 @@ template: any = { Name: 'DealPOS', Address: 'JL. Muara Karang No.30<br />Pluit -
 
 print(): void{
   let content: string = this.receipt;
-  this.printer
-
+  this.printer.printReceipt(content, this.template, this.setting)
 }
 
 
