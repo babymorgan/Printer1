@@ -29,6 +29,8 @@ export class PrintContentService {
     ctrl = this;
   }
 
+
+
   Header(): string {
     this.printline.Init(this.maxlength);
     let header: string = "";

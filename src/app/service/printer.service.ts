@@ -42,41 +42,35 @@ export class PrintBluetoothService {
     })
   }
 
-  fillData(data: any, template: any, config: any, set: PrinterSetting,): string {
-    //Fill Data Print
-    this.body.Data = data;
-    this.body.Template = template;
-    this.body.Config = config;
-    this.body.maxlength = set.MaxLength;
-    this.body.PrinterSetting = set;
-   
-    let content: string = "";
-    content += this.body.GenerateContent
-   
-    return content;
-  }
+  //fillData(data: any, template: any, config: any, set: PrinterSetting,): string {
+  //  //Fill Data Print
+  //  this.body.Data = data;
+  //  this.body.Template = template;
+  //  this.body.Config = config;
+  //  this.body.maxlength = set.MaxLength;
+  //  this.body.PrinterSetting = set;
+  // 
+  //  let content: string = "";
+  //  content += this.body.GenerateContent
+  // 
+  //  return content;
+  //}
 
-  async printReceipt(data:any, template: any, config: any,printer?:PrinterSetting): Promise<any> {
-  let content: string = await this.fillData(data, template, config, printer);
-  let info = await this.setPrint(content, printer, template);
-  return info;
-  }
+  //async printReceipt(data:any, template: any, config: any,printer?:PrinterSetting): Promise<any> {
+  //let content: string = await this.fillData(data, template, config, printer);
+  //let info = await this.setPrint(content, printer, template);
+  //return info;
+  //}
 
-  setPrint(content:any, printer: PrinterSetting, template: PrintTemplate, ){
-    let macAddress
-    this.connectBt(macAddress).subscribe(_ => {
-      this.bluetoothSerial.write(content).then
-        (_ => {
-          this.disconnectBt()
-        })
-    })
-
-  }
-
- 
-
-  
-  
+  //setPrint(content:any, printer: PrinterSetting, template: PrintTemplate, ){
+  //  let macAddress
+  //  this.connectBt(macAddress).subscribe(_ => {
+  //    this.bluetoothSerial.write(content).then
+  //      (_ => {
+  //        this.disconnectBt()
+  //      })
+  //  })
+  //}
 
 }
 
