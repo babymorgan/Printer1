@@ -29,6 +29,8 @@ export class HomePage implements OnInit{
 ngOnInit() {
 
   this.listPrinter();
+  this.printContent();
+
 
 }
 
