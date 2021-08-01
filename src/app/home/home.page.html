@@ -15,7 +15,12 @@
     <div>
         Selected Printer: {{selectedPrinter}}
     </div>
-    <ion-button expand="full" color="danger" *ngIf='selectedPrinter' (click)="print()">
+    <ion-input type="text" placeholder="title" [(ngModel)]="receipt.title" [ngModelOptions]="{standalone: true}">
+    </ion-input>
+  
+    <ion-input type="text" placeholder="customer" [(ngModel)]="receipt.customer" [ngModelOptions]="{standalone: true}">
+    </ion-input>
+    <ion-button expand="full" color="danger"  (click)="print()">
     PRINT!
     </ion-button>
 

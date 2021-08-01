@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'receipt-form',
+    loadChildren: () => import('./receipt-form/receipt-form.module').then( m => m.ReceiptFormPageModule)
+  },
 ];
 
 @NgModule({
