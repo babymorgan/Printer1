@@ -8,6 +8,7 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { PrintContentService } from '../service/printcontent.service';
 import { PrintLineService } from '../service/printline.service';
 import { SumPipe } from '../pipe/filter';
+import { PrinterSetting } from '../model/localDataModels';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { SumPipe } from '../pipe/filter';
     DecimalPipe,
     DatePipe,
     SumPipe,
+    PrinterSetting
   ],
   declarations: [HomePage]
 })

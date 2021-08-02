@@ -1,10 +1,6 @@
-
-
 export class PrinterSetting
 {
     MaxLength : number;
-
-
     NumberOfCopiesReceipt  : number;
     NumberOfCopiesOrder  : number;
     Cut:boolean;
