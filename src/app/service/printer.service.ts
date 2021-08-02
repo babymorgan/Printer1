@@ -13,10 +13,12 @@ export class PrintBluetoothService {
   constructor(
     private bluetoothSerial: BluetoothSerial,
     public body: PrintContentBody,
-    
+    public setting: PrinterSetting
   
   ) {
   }
+
+
 
 
   getBluetoothList(){
@@ -32,7 +34,7 @@ export class PrintBluetoothService {
     return this.bluetoothSerial.disconnect();
   }
 
-  printBT(macAddress, data_string) {
+  printBT(macAddress, data_string, setting: PrinterSetting) {
 
     this.connectBt(macAddress).subscribe(_ => {
       this.bluetoothSerial.write(data_string).then

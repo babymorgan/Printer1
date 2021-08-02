@@ -88,7 +88,7 @@ this.content = title + tanggal + noInvoice + customer + separator + header + sep
 
   let invoicePage = this.content
   console.log(invoicePage)
-   this.printer.printBT(this.selectedPrinter,invoicePage)
+   this.printer.printBT(this.selectedPrinter,invoicePage, this.setting)
 }
 
 }
