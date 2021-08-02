@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PrintType, PrinterSetting } from '../model/localDataModels'
+import { PrinterSetting } from '../model/localDataModels'
 import { DecimalPipe, DatePipe } from '@angular/common';
 import { PrintLineService } from '../service/printline.service';
 import { Constants } from '../model/constants';
@@ -123,7 +123,7 @@ export class PrintContentService {
   TitlePark() {
     this.printline.Init(this.maxlength);
     let title = "";
-    title += this.printline.AppendCenter(this.PrinterSetting.Name);
+   
     title += this.printline.AppendCenter("#" + ctrl.Data.Title);
     title += this.LineSeparator();
 
@@ -352,16 +352,6 @@ export class PrintContentService {
   }
 
 
-  Note(type: PrintType): string {
-    let extra: string = "";
-    if (ctrl.Config) {
-      extra += type == PrintType.Park ? this.ExtraNote() : this.SalesName();
-      extra += type == PrintType.Park ? this.SalesName() : this.ExtraNote();
-      if (type == PrintType.Park) extra += this.NumberOfPerson();
-      extra += this.InvoiceNote();
-    }
-    return extra;
-  }
 
   InvoiceNote(): string {
     let invoiceNote: string = "";
@@ -452,57 +442,57 @@ export class PrintContentService {
 
 }
 
-@Injectable({
-  providedIn: 'root'
-})
-export class PrintContentBody extends PrintContentService {
-  GenerateContent(type: PrintType): string {
-    let content: string = "";
-
-    content += this.Header(); // Generate  Template Name & Address
-    content += this.ContacInfo(); //Generate  Contact Info
-    content += this.Contact(); // Generate  Contact
-    content += this.Title();
-
-    let printPrice: boolean = false;
-    printPrice = true;
-    content += this.Item(printPrice); // Generate  Item
-    content += this.Summary(); // Generate  For Summary Footer
-    content += this.PaymentMethod(); // Generate Print For Payment Method
-
-    if (ctrl.Data.LoyaltyPoint) {
-      content += this.LoyaltyPoint();
-    }
-
-    if (ctrl.Data.Coupon) {
-      content += this.coupon();
-    }
-
-    content += this.Note(PrintType.Receipt);
-    content += this.FooterLeft();
-
-    content += this.PrintTime();
-    if (this.isBluetooth && ctrl.Config) {
-      if (ctrl.Config.PrintConfigInvoice.Footer.CreatorVisible) {
-        content += this.PrintPerson();
-      }
-    }
-    content += this.Feed(1);
-
-    return content;
-  }
-
-
-  GenerateContentPark(type: PrintType): string {
-    let content: string = "";
-    content += this.TitlePark();
-    content += this.ExtraNotePark();
-    content += this.DatePark();
-
-    let printPrice: boolean = false;
-    content += this.ItemforPark(printPrice); // Generate  Item
-    content += this.parkNote();
-    content += this.Feed(5);
-    return content;
-  }
-}
+//@Injectable({
+//  providedIn: 'root'
+//})
+//export class PrintContentBody extends PrintContentService {
+//  GenerateContent(type: PrintType): string {
+//    let content: string = "";
+//
+//    content += this.Header(); // Generate  Template Name & Address
+//    content += this.ContacInfo(); //Generate  Contact Info
+//    content += this.Contact(); // Generate  Contact
+//    content += this.Title();
+//
+//    let printPrice: boolean = false;
+//    printPrice = true;
+//    content += this.Item(printPrice); // Generate  Item
+//    content += this.Summary(); // Generate  For Summary Footer
+//    content += this.PaymentMethod(); // Generate Print For Payment Method
+//
+//    if (ctrl.Data.LoyaltyPoint) {
+//      content += this.LoyaltyPoint();
+//    }
+//
+//    if (ctrl.Data.Coupon) {
+//      content += this.coupon();
+//    }
+//
+//    content += this.Note(PrintType.Receipt);
+//    content += this.FooterLeft();
+//
+//    content += this.PrintTime();
+//    if (this.isBluetooth && ctrl.Config) {
+//      if (ctrl.Config.PrintConfigInvoice.Footer.CreatorVisible) {
+//        content += this.PrintPerson();
+//      }
+//    }
+//    content += this.Feed(1);
+//
+//    return content;
+//  }
+//
+//
+//  GenerateContentPark(type: PrintType): string {
+//    let content: string = "";
+//    content += this.TitlePark();
+//    content += this.ExtraNotePark();
+//    content += this.DatePark();
+//
+//    let printPrice: boolean = false;
+//    content += this.ItemforPark(printPrice); // Generate  Item
+//    content += this.parkNote();
+//    content += this.Feed(5);
+//    return content;
+//  }
+//}

@@ -3,7 +3,7 @@ import { BluetoothSerial } from "@ionic-native/bluetooth-serial/ngx";
 import { promise } from "protractor";
 import { PrinterSetting } from "../model/localDataModels";
 import { PrintTemplate } from "../model/print-template";
-import { PrintContentBody } from "./printcontent.service";
+//import { PrintContentBody } from "./printcontent.service";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class PrintBluetoothService {
 
   constructor(
     private bluetoothSerial: BluetoothSerial,
-    public body: PrintContentBody,
+    //public body: PrintContentBody,
     public setting: PrinterSetting
   
   ) {

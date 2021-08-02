@@ -2,9 +2,6 @@
 
 export class PrinterSetting
 {
-
-
-
     MaxLength : number;
 
 

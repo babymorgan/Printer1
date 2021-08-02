@@ -8,7 +8,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { PrintContentBody, PrintContentService } from './service/printcontent.service';
+import {  PrintContentService } from './service/printcontent.service';
 import { PrintLineService } from './service/printline.service';
 
 @NgModule({

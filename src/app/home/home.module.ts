@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { PrintBluetoothService } from '../service/printer.service';
 import { HomePageRoutingModule } from './home-routing.module';
-import { PrintContentBody, PrintContentService } from '../service/printcontent.service';
+import { PrintContentService } from '../service/printcontent.service';
 import { PrintLineService } from '../service/printline.service';
 import { SumPipe } from '../pipe/filter';
 
@@ -21,7 +21,7 @@ import { SumPipe } from '../pipe/filter';
     PrintBluetoothService,
     PrintContentService,
     PrintLineService,
-    PrintContentBody,
+    //PrintContentBody,
     DecimalPipe,
     DatePipe,
     SumPipe,
